@@ -1,14 +1,6 @@
 // Chris Cheng
 // 11/27/2021
 // Santa Clara County Crime Report Dashboard 
-// Description: A vanilla JS app that fetches SCC Crime Report data from SCC Open Data API and 
-// visualizes the data with a map (Leaflet) and some straight-forward metrics (D3.js). 
-
-// Goal: Practice designing and developing a vanilla JS app from scratch in order to practice 
-// JS coding skills. 
-
-// Purpose: Create an app that I will use for myself to investigate the dataset and learn about 
-// SCC crime history from 2018 - present. 
 
 // Reason: Always wanted to learn how to use the D3 library. This will be perfect experience. 
 let getCrimeData = async function () {
@@ -24,9 +16,9 @@ let getCrimeData = async function () {
         const filteredData = dataset.filter(entry => entry.hasOwnProperty('address_1'))
             .filter(entry => entry.address_1.includes('Block' || 'BLOCK') === true)
             .filter(entry => entry.incident_description.includes('1021') === false);
-        console.log(filteredData[0].address_1.includes('Block'));
-        console.log(filteredData[0].address_1);
-        console.log(filteredData.length)
+        // console.log(filteredData[0].address_1.includes('Block'));
+        // console.log(filteredData[0].address_1);
+        document.body.querySelector('#num_incidents_to_date').textContent = filteredData.length.toLocaleString('en');
     }
     catch (err) {
         console.log(`Error: ${err}`);
