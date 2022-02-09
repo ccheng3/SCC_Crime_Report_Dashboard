@@ -1,0 +1,17 @@
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+#author {
+    text-align: center;
+}
+
+#sections {
+    line-height: 1.8rem;
+    padding: 1.6rem 16rem;
+}
+
+#num_crime_vs_TOD_bar_chart {
+    margin-top: 6rem;
+}

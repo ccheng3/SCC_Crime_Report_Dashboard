@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
+    <link rel="stylesheet" href="./style.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -17,25 +18,43 @@
 <body>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./script.js"></script>
-    <h1>The Santa Clara County Sheriff Crime Report Dashboard</h1>
-    <h2>Chris Cheng</h2>
-    <h3>A data visualization project using the data driven document library (D3.js) by Mike Bostock and vanilla
-        Javascript.</h3>
-    <h4>Number of recorded crime incidents to date: <span id="num_incidents_to_date"></span>
-    </h4>
-    <p>I have removed all of the incidents that do not contain a specific address number from the dataset to help ease
-        in the mapping of the geographical visualization. Unfortunately, the Santa Clara County Sheriff's department
-        does not
-        appear to utilize some sort of address standardization, resulting in this problem.</p>
-    <p>I do want to point out that the Seattle Police department's crime report dataset is much more detailed and
-        refined in this regard - Seattle PD goes even further and actually records the latitude and longitudinal
-        coordinates of each incident. Massive respect to Seattle PD for putting in that extra effort. </p>
-    <p>I will work with
-        what I have in this dataset, but there is a lot left to be desired when comparing this dataset to that of
-        Seattle
-        PD. Regardless, I am fortunate that this Santa Clara County Crime Report open API even exists in the first
-        place. Now let us
-        explore this dataset!</p>
+    <div id="title">
+        <h1>The Santa Clara County Sheriff Crime Report Dashboard</h1>
+    </div>
+    <h2 id="author">Chris Cheng</h2>
+    <div id="sections">
+        <div class="introduction">
+            <h3>A data visualization project using the data driven document library (D3.js) by Mike Bostock and vanilla
+                Javascript.</h3>
+            <h4>Number of recorded crime incidents to date: <span id="num_incidents_to_date"></span>
+            </h4>
+            <p>I have removed all of the incidents that do not contain a specific address number from the dataset to
+                help
+                ease
+                in the mapping of the geographical visualization. Unfortunately, the Santa Clara County Sheriff's
+                department
+                does not
+                appear to utilize some sort of address standardization, resulting in this problem.</p>
+            <p>I have also removed all of the "Phone Ur Office" datapoints since these do not appear to be crime
+                incidents.
+                I
+                contacted Mr. Ed Bagsik, who is listed as the
+                IT manager for Santa Clara County Open Data, but never received a reply. The Santa Clara County
+                government
+                has a
+                track record
+                of
+                low transparency (see CCW problem), so I'm really not too surprised.
+            </p>
+            <p>I do want to point out that the Seattle Police department's crime report dataset is much more detailed
+                and
+                refined in this regard - Seattle PD goes even further and actually records the latitude and longitudinal
+                coordinates of each incident. Massive respect to Seattle PD for putting in that extra effort. </p>
+        </div>
+        <div id="num_crime_vs_TOD_bar_chart">
+            <h3>Let's first see how the number of incident reports changes over a 24 hour period.</h3>
+        </div>
+    </div>
 </body>
 
 </html>
