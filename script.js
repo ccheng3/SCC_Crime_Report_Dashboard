@@ -68,7 +68,8 @@ let getCrimeData = async function () {
             .append('svg')
             .attr('width', svgWidth)
             .attr('height', svgHeight)
-            .style('padding', svgPadding);
+            .style('padding', svgPadding)
+            .style('padding-left', svgPadding + 10);
 
         svg_One.selectAll('rect')
             .data(dataset_one_final)
@@ -85,10 +86,23 @@ let getCrimeData = async function () {
                 return Math.abs(y_scale_one(d[1]) - y_scale_one(0)) - svgPadding;
             })
             .attr('fill', (d) => {
+                console.log(d);
                 return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
+            })
+            .on('mouseover', function (d) {
+                d3.select(this)
+                    .attr('fill', 'orange');
+                console.log(d);
+            })
+            .on('mouseout', function (d) {
+                d3.select(this)
+                    .transition()
+                    .duration(250)
+                    .attr('fill', 'green');
+
             });
 
-        // data_viz_one's title 
+        // data_viz_one's title
         svg_One.append('text')
             .attr('x', (svgWidth / 2))
             .attr('y', 15)
@@ -113,6 +127,22 @@ let getCrimeData = async function () {
             .attr('class', 'axis')
             .attr('transform', `translate(${svgPadding}, 0)`)
             .call(yAxis_one);
+
+        // axes need labelsÎ
+        svg_One.append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', svgWidth)
+            .attr('y', svgHeight + 10)
+            .text('Hour of Day');
+
+        svg_One.append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', 20)
+            .attr('y', svgHeight + 10)
+            .text('Number of Reported Crime Incidents');
+
+        // hover interactivity displays num incidents as tooltip 
+
     }
     catch (err) {
         console.log(`Error: ${err}`);

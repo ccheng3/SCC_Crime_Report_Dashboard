@@ -21,11 +21,11 @@
     <div id="title">
         <h1>The Santa Clara County Sheriff Crime Report Dashboard</h1>
     </div>
-    <h2 id="author">Chris Cheng</h2>
+    <h2 class="author">Chris Cheng</h2>
+    <h6 class="author"><i>Self-Taught Front-End Web Developer</i></h6>
     <div id="sections">
         <div class="introduction">
-            <h3>A data visualization project using the data driven document library (D3.js) by Mike Bostock and vanilla
-                Javascript.</h3>
+            <h3>A data visualization project powered by the data driven document library (D3.js) by Mike Bostock.</h3>
             <h4>Number of recorded crime incidents to date: <span id="num_incidents_to_date"></span>
             </h4>
             <p>I have removed all of the "Phone Ur Office" datapoints since these do not appear to be crime
@@ -58,12 +58,17 @@
             what the data will say?
 
             <div id="data_viz_1" class="data_viz"> </div>
+            <div id="tooltip" class="hidden">
+                <p><strong>Label Heading Goes Here</strong></p>
+                <p><span id="value">100</span></p>
+            </div>
 
         </div>
         <div class="sources_citations">
             <h3>Sources</h3>
             The data is sourced from the Santa Clara County Open Data Portal. Here is the link to the dataset:
-            <a href="https://data.sccgov.org/Public-Safety/Crime-Reports/n9u6-aijz">LINK is Here!</a>
+            <a href="https://data.sccgov.org/Public-Safety/Crime-Reports/n9u6-aijz" target="_blank"
+                rel="noopener noreferrer">Link here</a>
             <br>
             <br>
             An interesting observation of note - this is the most popular dataset that is not COVID-19 related.
@@ -73,6 +78,11 @@
             in seeing what the numbers say in order to justify their pre-conceived political notions about Santa Clara
             County
             or the San Francisco Bay Area in general. Or both, since the two sentiments are not mutually exclusive.
+
+            <h4>Interactive Data Visualization for the Web, 2nd Edition <span><a
+                        href="https://learning.oreilly.com/library/view/interactive-data-visualization/9781491921296/"
+                        target="_blank" rel="noopener noreferrer">Link here</a></span></h4>
+            <div></div>
         </div>
     </div>
 </body>
