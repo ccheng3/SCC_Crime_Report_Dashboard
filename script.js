@@ -43,6 +43,11 @@ let getCrimeData = async function () {
         let svgWidth = 600;
         let svgHeight = 150;
         let barPadding = 1;
+        // this factor decreases all d[1] values so bar heights remain discernable within svg's height
+        // the d[1] values themselves remain unchanged in dataset_one_final array 
+        // If you forget why this is needed, remove the factor and notice all bar heights exceed
+        // svg's height and then "look to be at same height", which is not true at all.  
+        let data_scaling_factor = 60;
 
         let svg_One = d3.select('#data_viz_1')
             .append('svg')
@@ -55,11 +60,16 @@ let getCrimeData = async function () {
             .attr('x', (d, i) => {
                 return i * (svgWidth / dataset_one_final.length);
             })
-            .attr('y', (d, i) => {
-                return svgHeight - d;
+            .attr('y', (d) => {
+                return svgHeight - d[1] / data_scaling_factor;
             })
             .attr('width', svgWidth / dataset_one_final.length - barPadding)
-            .attr('height', 100);
+            .attr('height', (d) => {
+                return d[1] / data_scaling_factor;
+            })
+            .attr('fill', (d) => {
+                return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
+            });
 
     }
     catch (err) {
