@@ -7,9 +7,13 @@
     text-align: center;
 }
 
+#num_incidents_to_date {
+    font-size: larger;
+}
+
 #sections {
     line-height: 1.8rem;
-    padding: 1.6rem 16rem;
+    padding: 1.6rem 20rem;
 }
 
 #num_crime_vs_TOD_bar_chart {
