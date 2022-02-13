@@ -41,7 +41,7 @@ let getCrimeData = async function () {
 
         // draw the bar chart (number of incidents (Y-axis) vs. hour of day (X-axis))
         let svgWidth = 600;
-        let svgHeight = 150;
+        let svgHeight = 200;
         let barPadding = 1;
         // x_scale_one's domain goes from 0 to the largest x value in the array, 23
         // x_scale_one's range goes from 0 to the svg element's width 
@@ -56,17 +56,20 @@ let getCrimeData = async function () {
             .domain([0, d3.max(dataset_one_final, (d) => {
                 return d[1];
             })])
-            .range([0, svgHeight]);
+            .range([svgHeight - 50, 0]);
         // this factor decreases all d[1] values so bar heights remain discernable within svg's height
         // the d[1] values themselves remain unchanged in dataset_one_final array 
         // If you forget why this is needed, remove the factor and notice all bar heights exceed
         // svg's height and then "look to be at same height", which is not true at all.  
         let data_scaling_factor = 60;
+        let svgPadding = 20;
 
         let svg_One = d3.select('#data_viz_1')
             .append('svg')
             .attr('width', svgWidth)
-            .attr('height', svgHeight);
+            .attr('height', svgHeight)
+            .style('padding', svgPadding);
+
         svg_One.selectAll('rect')
             .data(dataset_one_final)
             .enter()
@@ -75,16 +78,41 @@ let getCrimeData = async function () {
                 return i * (svgWidth / dataset_one_final.length);
             })
             .attr('y', (d) => {
-                return svgHeight - y_scale_one(d[1]);
+                return svgHeight - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
             })
             .attr('width', svgWidth / dataset_one_final.length - barPadding)
             .attr('height', (d) => {
-                return y_scale_one(d[1]);
+                return Math.abs(y_scale_one(d[1]) - y_scale_one(0)) - svgPadding;
             })
             .attr('fill', (d) => {
                 return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
             });
 
+        // data_viz_one's title 
+        svg_One.append('text')
+            .attr('x', (svgWidth / 2))
+            .attr('y', 15)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '16px')
+            .attr('fill', 'white')
+            .text("Number of Incidents vs. Hour of Day");
+
+        // define x and y axes functions
+        let xAxis_one = d3.axisBottom()
+            .scale(x_scale_one);
+        let yAxis_one = d3.axisLeft()
+            .scale(y_scale_one);
+
+        // then draw both x and y axes 
+        svg_One.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(0, ${svgHeight - svgPadding})`)
+            .call(xAxis_one);
+
+        svg_One.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(${svgPadding}, 0)`)
+            .call(yAxis_one);
     }
     catch (err) {
         console.log(`Error: ${err}`);
