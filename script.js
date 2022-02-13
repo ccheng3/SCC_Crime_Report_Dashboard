@@ -43,6 +43,20 @@ let getCrimeData = async function () {
         let svgWidth = 600;
         let svgHeight = 150;
         let barPadding = 1;
+        // x_scale_one's domain goes from 0 to the largest x value in the array, 23
+        // x_scale_one's range goes from 0 to the svg element's width 
+        let x_scale_one = d3.scaleLinear()
+            .domain([0, d3.max(dataset_one_final, (d) => {
+                return d[0];
+            })])
+            .range([0, svgWidth]);
+        // y_scale_one's domain goes from 0 to the largest y value in the array
+        // y_scale_one's range goes from 0 to the svg element's height 
+        let y_scale_one = d3.scaleLinear()
+            .domain([0, d3.max(dataset_one_final, (d) => {
+                return d[1];
+            })])
+            .range([0, svgHeight]);
         // this factor decreases all d[1] values so bar heights remain discernable within svg's height
         // the d[1] values themselves remain unchanged in dataset_one_final array 
         // If you forget why this is needed, remove the factor and notice all bar heights exceed
@@ -61,11 +75,11 @@ let getCrimeData = async function () {
                 return i * (svgWidth / dataset_one_final.length);
             })
             .attr('y', (d) => {
-                return svgHeight - d[1] / data_scaling_factor;
+                return svgHeight - y_scale_one(d[1]);
             })
             .attr('width', svgWidth / dataset_one_final.length - barPadding)
             .attr('height', (d) => {
-                return d[1] / data_scaling_factor;
+                return y_scale_one(d[1]);
             })
             .attr('fill', (d) => {
                 return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
