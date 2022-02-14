@@ -1,6 +1,8 @@
 # SCC_Crime_Report_Dashboard
 Santa Clara County Sheriff Crime Report Data Viz Dashboard
 
+Deployed here: https://condescending-torvalds-d3481f.netlify.app
+
  ### Description: 
  A vanilla JS app that fetches SCC Crime Report data from SCC Open Data API and 
  visualizes the data with a map (Leaflet) and some straight-forward metrics (D3.js). 
