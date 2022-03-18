@@ -80,7 +80,7 @@ let getCrimeData = async function () {
                 return i * ((svgWidth - 20) / dataset_one_final.length) + yAxisLabelPadAmount;
             })
             .attr('y', (d) => {
-                return svgHeight - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
+                return svgHeight - 20 - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
             })
             .attr('width', svgWidth / dataset_one_final.length - barPadding)
             .attr('height', (d) => {
@@ -121,19 +121,19 @@ let getCrimeData = async function () {
         // then draw both x and y axes 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${yAxisLabelPadAmount}, ${svgHeight - svgPadding})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount}, ${svgHeight - svgPadding - 20})`)
             .call(xAxis_one);
 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${yAxisLabelPadAmount}, ${30})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount}, ${10})`)
             .call(yAxis_one);
 
         // axes need labels
         svg_One.append('text')
             .attr('text-anchor', 'middle')
-            .attr('x', svgWidth)
-            .attr('y', svgHeight + 10)
+            .attr('x', svgWidth / 2)
+            .attr('y', svgHeight - 5)
             .text('Hour of Day');
 
         svg_One.append('text')
