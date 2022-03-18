@@ -67,16 +67,16 @@ let getCrimeData = async function () {
         let svg_One = d3.select('#data_viz_1')
             .append('svg')
             .attr('width', svgWidth)
-            .attr('height', svgHeight)
-            .style('padding', svgPadding)
-            .style('padding-left', svgPadding + 10);
+            .attr('height', svgHeight);
+        // .style('padding', svgPadding)
+        // .style('padding-left', svgPadding + 10);
 
         svg_One.selectAll('rect')
             .data(dataset_one_final)
             .enter()
             .append('rect')
             .attr('x', (d, i) => {
-                return i * (svgWidth / dataset_one_final.length);
+                return i * (svgWidth / dataset_one_final.length) + 35;
             })
             .attr('y', (d) => {
                 return svgHeight - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
@@ -108,7 +108,7 @@ let getCrimeData = async function () {
             .attr('y', 15)
             .attr('text-anchor', 'middle')
             .style('font-size', '16px')
-            .attr('fill', 'white')
+            .attr('fill', 'rgba(21, 17, 19, 0.8)')
             .text("Number of Incidents vs. Hour of Day");
 
         // define x and y axes functions
@@ -120,15 +120,15 @@ let getCrimeData = async function () {
         // then draw both x and y axes 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(0, ${svgHeight - svgPadding})`)
+            .attr('transform', `translate(35, ${svgHeight - svgPadding})`)
             .call(xAxis_one);
 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${svgPadding}, 0)`)
+            .attr('transform', `translate(${35}, ${30})`)
             .call(yAxis_one);
 
-        // axes need labelsÎ
+        // axes need labels
         svg_One.append('text')
             .attr('text-anchor', 'middle')
             .attr('x', svgWidth)

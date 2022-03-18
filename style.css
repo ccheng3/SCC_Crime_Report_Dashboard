@@ -11,9 +11,10 @@
     font-size: larger;
 }
 
+/* this padding parameter is sketchy af - horrible layout on phone viewport. */
 #sections {
     line-height: 1.8rem;
-    padding: 1.6rem 20rem;
+    padding: 1.6rem 15rem;
 }
 
 #num_crime_vs_TOD_bar_chart {
