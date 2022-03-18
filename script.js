@@ -77,7 +77,7 @@ let getCrimeData = async function () {
             .enter()
             .append('rect')
             .attr('x', (d, i) => {
-                return i * ((svgWidth - 20) / dataset_one_final.length) + yAxisLabelPadAmount;
+                return i * ((svgWidth - 60) / dataset_one_final.length) + yAxisLabelPadAmount;
             })
             .attr('y', (d) => {
                 return svgHeight - 20 - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
@@ -114,7 +114,8 @@ let getCrimeData = async function () {
 
         // define x and y axes functions
         let xAxis_one = d3.axisBottom()
-            .scale(x_scale_one);
+            .scale(x_scale_one)
+            .ticks(27);
         let yAxis_one = d3.axisLeft()
             .scale(y_scale_one);
 
