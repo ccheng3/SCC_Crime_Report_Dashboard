@@ -40,7 +40,7 @@ let getCrimeData = async function () {
         }
 
         // draw the bar chart (number of incidents (Y-axis) vs. hour of day (X-axis))
-        let svgWidth = 600;
+        let svgWidth = 700;
         let svgHeight = 200;
         let barPadding = 1;
         // x_scale_one's domain goes from 0 to the largest x value in the array, 23
@@ -63,6 +63,7 @@ let getCrimeData = async function () {
         // svg's height and then "look to be at same height", which is not true at all.  
         let data_scaling_factor = 60;
         let svgPadding = 20;
+        let yAxisLabelPadAmount = 50;
 
         let svg_One = d3.select('#data_viz_1')
             .append('svg')
@@ -76,7 +77,7 @@ let getCrimeData = async function () {
             .enter()
             .append('rect')
             .attr('x', (d, i) => {
-                return i * (svgWidth / dataset_one_final.length) + 35;
+                return i * ((svgWidth - 20) / dataset_one_final.length) + yAxisLabelPadAmount;
             })
             .attr('y', (d) => {
                 return svgHeight - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
@@ -120,12 +121,12 @@ let getCrimeData = async function () {
         // then draw both x and y axes 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(35, ${svgHeight - svgPadding})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount}, ${svgHeight - svgPadding})`)
             .call(xAxis_one);
 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${35}, ${30})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount}, ${30})`)
             .call(yAxis_one);
 
         // axes need labels
@@ -137,9 +138,10 @@ let getCrimeData = async function () {
 
         svg_One.append('text')
             .attr('text-anchor', 'middle')
-            .attr('x', 20)
-            .attr('y', svgHeight + 10)
-            .text('Number of Reported Crime Incidents');
+            .attr('x', -100)
+            .attr('y', 10)
+            .text('Num Incidents')
+            .attr("transform", "rotate(-90)");
 
         // hover interactivity displays num incidents as tooltip 
 
