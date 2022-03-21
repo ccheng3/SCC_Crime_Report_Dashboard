@@ -49,7 +49,8 @@ let getCrimeData = async function () {
             .domain([0, d3.max(dataset_one_final, (d) => {
                 return d[0];
             })])
-            .range([0, svgWidth - 88]);
+            // super jank x-axis tick implementation
+            .range([0, svgWidth - 86]);
         // y_scale_one's domain goes from 0 to the largest y value in the array
         // y_scale_one's range goes from 0 to the svg element's height 
         let y_scale_one = d3.scaleLinear()
@@ -80,11 +81,11 @@ let getCrimeData = async function () {
                 return i * ((svgWidth - 60) / dataset_one_final.length) + yAxisLabelPadAmount;
             })
             .attr('y', (d) => {
-                return svgHeight - 20 - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
+                return svgHeight - svgPadding - Math.abs(y_scale_one(d[1]) - y_scale_one(0));
             })
-            .attr('width', svgWidth / dataset_one_final.length - barPadding)
+            .attr('width', (svgWidth - yAxisLabelPadAmount) / dataset_one_final.length - barPadding)
             .attr('height', (d) => {
-                return Math.abs(y_scale_one(d[1]) - y_scale_one(0)) - svgPadding;
+                return Math.abs(y_scale_one(d[1]) - y_scale_one(0));
             })
             .attr('fill', (d) => {
                 console.log(d);
@@ -125,21 +126,15 @@ let getCrimeData = async function () {
         // then draw both x and y axes 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${yAxisLabelPadAmount + 14}, ${svgHeight - svgPadding - 20})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount + 12}, ${svgHeight - svgPadding})`)
             .call(xAxis_one);
 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${yAxisLabelPadAmount}, ${10})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount}, ${30})`)
             .call(yAxis_one);
 
         // axes need labels
-        svg_One.append('text')
-            .attr('text-anchor', 'middle')
-            .attr('x', svgWidth / 2)
-            .attr('y', svgHeight - 5)
-            .text('Hour of Day');
-
         svg_One.append('text')
             .attr('text-anchor', 'middle')
             .attr('x', -100)
