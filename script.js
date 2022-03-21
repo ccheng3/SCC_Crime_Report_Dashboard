@@ -49,7 +49,7 @@ let getCrimeData = async function () {
             .domain([0, d3.max(dataset_one_final, (d) => {
                 return d[0];
             })])
-            .range([0, svgWidth]);
+            .range([0, svgWidth - 88]);
         // y_scale_one's domain goes from 0 to the largest y value in the array
         // y_scale_one's range goes from 0 to the svg element's height 
         let y_scale_one = d3.scaleLinear()
@@ -118,14 +118,14 @@ let getCrimeData = async function () {
         // define x and y axes functions
         let xAxis_one = d3.axisBottom()
             .scale(x_scale_one)
-            .ticks(27);
+            .ticks(24);
         let yAxis_one = d3.axisLeft()
             .scale(y_scale_one);
 
         // then draw both x and y axes 
         svg_One.append('g')
             .attr('class', 'axis')
-            .attr('transform', `translate(${yAxisLabelPadAmount}, ${svgHeight - svgPadding - 20})`)
+            .attr('transform', `translate(${yAxisLabelPadAmount + 14}, ${svgHeight - svgPadding - 20})`)
             .call(xAxis_one);
 
         svg_One.append('g')
