@@ -93,15 +93,18 @@ let getCrimeData = async function () {
             .on('mouseover', function (d) {
                 d3.select(this)
                     .attr('fill', 'orange');
-                console.log(d);
             })
             .on('mouseout', function (d) {
                 d3.select(this)
                     .transition()
                     .duration(250)
                     .attr('fill', 'green');
-
+            })
+            .append("title")
+            .text(function (d) {
+                return `Number Incidents: ${d[1]}`;
             });
+        console.log(dataset_one_final);
 
         // data_viz_one's title
         svg_One.append('text')
