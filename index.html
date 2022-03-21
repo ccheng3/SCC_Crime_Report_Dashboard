@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCC Crime Dashboard</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <link rel="stylesheet" href="./style.css">
@@ -25,36 +26,51 @@
     <h6 class="author"><i>Self-Taught Front-End Web Developer</i></h6>
     <div id="sections">
         <div class="introduction">
-            <h3>A data visualization project powered by the data driven document library (D3.js) by Mike Bostock.</h3>
-            <h4>Number of recorded crime incidents to date: <span id="num_incidents_to_date"></span>
+            <h3>A web-based data visualization project powered by the
+                Data-Driven Documents
+                library (D3.js).</h3>
+            <h4>Number of recorded crime incidents to date: <span
+                    id="num_incidents_to_date"></span>
             </h4>
-            <p>I have removed all of the "Phone Ur Office" datapoints since these do not appear to be crime
+            <p>I have removed all of the "Phone Ur Office" datapoints since
+                these do not appear to be crime
                 incidents.
-                I
-                contacted Mr. Ed Bagsik,
-                IT manager of Santa Clara County Open Data, for more information on the nature of this incident type -
-                but never received a reply.
                 <br>
                 <br>
-                Unfortunately, it appears that the Santa Clara County Open Datasets do not
-                include a parameter description document, and the lack of clear documentation is just simply
-                frustrating. After all, what could the "Phone Ur Office" incidents be? Would it simply be deputy
-                sheriffs calling in to report the start/end of a patrol shift? Or something more urgent, like
-                reporting in to confirm being en-route to a 911 call or communicating availability to respond
+                Unfortunately, it appears that the Santa Clara County Open
+                Datasets do not
+                include a parameter description document, and the lack of clear
+                documentation is just simply
+                frustrating. After all, what could the "Phone Ur Office"
+                incidents be? Would it simply be deputy
+                sheriffs calling in to report the start/end of a patrol shift?
+                Or something more urgent, like
+                reporting in to confirm being en-route to a 911 call or
+                communicating availability to respond
                 to a 911 call?
             </p>
-            <p>The Seattle Police department's crime report dataset is much more detailed
+            <p>The Seattle Police department's crime report dataset is much more
+                detailed
                 and
-                refined in this regard - Seattle PD actually records the latitude and longitudinal
-                coordinates of each incident. Massive respect to Seattle PD for putting in that extra effort. </p>
+                refined in this regard - Seattle PD actually records the
+                latitude and longitudinal
+                coordinates of each incident. Massive respect to Seattle PD for
+                putting in that extra effort. SF and Silicon Valley local
+                govt's really need to follow suit and strengthen their Open Data
+                practices. </p>
         </div>
         <div id="num_crime_vs_TOD_bar_chart">
-            <h3>Let's first take a look at the frequency distribution of incident reports over a 24 hour period.
+            <h3>Let's first take a look at the frequency distribution of
+                incident reports over a 24 hour period.
             </h3>
-            The X-axis tracks the hour of day, while the Y-axis tracks the number of incidents recorded during each
-            hour. My initial guess is that there should be less reported incidents during the day, and then a sharp
-            increase during the night. I am making the general assumption that the cover of darkness would push more
-            criminal activity to occur at night. However, it could just very well stay relatively constant. I wonder
+            The X-axis tracks the hour of day, while the Y-axis tracks the
+            number of incidents recorded during each
+            hour. My initial guess is that there should be less reported
+            incidents during the day, and then a sharp
+            increase during the night. I am making the general assumption that
+            the cover of darkness would push more
+            criminal activity to occur at night. However, it could just very
+            well stay relatively constant. I wonder
             what the data will say?
 
             <div id="data_viz_1" class="data_viz"> </div>
@@ -66,23 +82,51 @@
         </div>
         <div class="sources_citations">
             <h3>Sources</h3>
-            The data is sourced from the Santa Clara County Open Data Portal. Here is the link to the dataset:
-            <a href="https://data.sccgov.org/Public-Safety/Crime-Reports/n9u6-aijz" target="_blank"
-                rel="noopener noreferrer">Link here</a>
+            The data is sourced from the Santa Clara County Open Data Portal.
+            Here is the link to the dataset:
+            <a href="https://data.sccgov.org/Public-Safety/Crime-Reports/n9u6-aijz"
+                target="_blank" rel="noopener noreferrer">Link here</a>
             <br>
             <br>
-            An interesting observation of note - this is the most popular dataset that is not COVID-19 related.
-            I think two conclusions could be equally likely to be true. Firstly, SCC residents are becoming increasingly
-            concerned about rising crime in the County. Or, alternatively, users who don't even live in the County are
+            An interesting observation of note - this is the most popular
+            dataset that is not COVID-19 related.
+            I think two conclusions could be equally likely to be true. Firstly,
+            SCC residents are becoming increasingly
+            concerned about rising crime in the County. Or, alternatively, users
+            who don't even live in the County are
             interested
-            in seeing what the numbers say in order to justify their pre-conceived political notions about Santa Clara
+            in seeing what the numbers say in order to justify their
+            pre-conceived political notions about Santa Clara
             County
-            or the San Francisco Bay Area in general. Or both, since the two sentiments are not mutually exclusive.
+            or the San Francisco Bay Area in general. Or both, since the two
+            sentiments are not mutually exclusive.
 
             <h4>Interactive Data Visualization for the Web, 2nd Edition <span><a
                         href="https://learning.oreilly.com/library/view/interactive-data-visualization/9781491921296/"
-                        target="_blank" rel="noopener noreferrer">Link here</a></span></h4>
-            <div></div>
+                        target="_blank" rel="noopener noreferrer">Link
+                        here</a> (through O'Reilly Safari)</span></h4>
+            <div>Scott does an amazing job of communicating his knowledge of D3
+                in a conversational format, especially
+                geared towards someone without a hard CS background. Perfect
+                match for me because I want to make things
+                work and not get mired up in the technicalities behind the
+                library. A small problem I have is that some of the example data
+                viz's are not displaying
+                on my computer for some reason. I have yet to resolve the
+                problem. I do try and study the
+                code changes in the examples but I am a
+                visual learner and not having the toy data viz's to look at
+                really hurts.
+            </div>
+            <h4>The Complete JavaScript Course 2022: From Zero to Expert!
+                <span><a href="https://www.udemy.com/course/the-complete-javascript-course/"
+                        target="_blank" rel="noopener noreferrer">Link
+                        here</a></span>
+            </h4>
+            <div>Jonas is such a great teacher and to be perfectly honest, he
+                is single-handedly responsible for
+                keeping me interested in web development.
+            </div>
         </div>
     </div>
 </body>
