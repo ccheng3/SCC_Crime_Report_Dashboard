@@ -128,7 +128,7 @@ let getCrimeData = async function () {
             .attr('transform', `translate(${svgPadding}, 0)`)
             .call(yAxis_one);
 
-        // axes need labelsÎ
+        // axes need labels
         svg_One.append('text')
             .attr('text-anchor', 'middle')
             .attr('x', svgWidth)
