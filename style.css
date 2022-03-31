@@ -17,7 +17,8 @@
     padding: 5% 15%;
 }
 
-#num_crime_vs_TOD_bar_chart {
+/* each viz section is separated by whitespace for visual hierarchy */
+.data-viz-section {
     margin-top: 6rem;
 }
 

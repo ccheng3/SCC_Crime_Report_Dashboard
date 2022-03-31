@@ -85,8 +85,6 @@ let getCrimeData = async function () {
         let svg_One = d3
             .select("#data_viz_1")
             .append("svg")
-            // .attr("width", svgWidth)
-            // .attr("height", svgHeight);
             .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
         // .style('padding', svgPadding)
         // .style('padding-left', svgPadding + 10);
@@ -164,7 +162,7 @@ let getCrimeData = async function () {
             .attr("y", svgHeight + 10)
             .text("Hour of Day");
 
-
+        // data viz 2: top 5 most common 'primary' crime incidents 
     }
     catch (err) {
         console.log(`Error: ${err} `);
