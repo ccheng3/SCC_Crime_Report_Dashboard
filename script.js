@@ -102,6 +102,7 @@ let getCrimeData = async function () {
                     .attr('fill', 'green');
             })
             .append("title")
+            // hover interactivity displays num incidents as tooltip 
             .text(function (d) {
                 return `Number Incidents: ${d[1]}`;
             });
@@ -142,11 +143,10 @@ let getCrimeData = async function () {
             .text('Num Incidents')
             .attr("transform", "rotate(-90)");
 
-        // hover interactivity displays num incidents as tooltip 
 
     }
     catch (err) {
-        console.log(`Error: ${err}`);
+        console.log(`Error: ${err} `);
         // promise will still fulfill even if async f(x) fails, so you have to re-throw async()'s error here.
         throw err;
     }
