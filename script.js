@@ -85,8 +85,9 @@ let getCrimeData = async function () {
         let svg_One = d3
             .select("#data_viz_1")
             .append("svg")
-            .attr("width", svgWidth)
-            .attr("height", svgHeight);
+            // .attr("width", svgWidth)
+            // .attr("height", svgHeight);
+            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
         // .style('padding', svgPadding)
         // .style('padding-left', svgPadding + 10);
 
@@ -163,7 +164,6 @@ let getCrimeData = async function () {
             .attr("y", svgHeight + 10)
             .text("Hour of Day");
 
-<<<<<<< HEAD
 
     }
     catch (err) {
@@ -171,22 +171,6 @@ let getCrimeData = async function () {
         // promise will still fulfill even if async f(x) fails, so you have to re-throw async()'s error here.
         throw err;
     }
-=======
-    svg_One
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("x", -100)
-      .attr("y", 10)
-      .text("Num Incidents")
-      .attr("transform", "rotate(-90)");
-
-    // hover interactivity displays num incidents as tooltip
-  } catch (err) {
-    console.log(`Error: ${err}`);
-    // promise will still fulfill even if async f(x) fails, so you have to re-throw async()'s error here.
-    throw err;
-  }
->>>>>>> 18317926cccde311f6c13ef52cf70436a35e4154
 };
 
 getCrimeData();
