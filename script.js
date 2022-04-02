@@ -105,7 +105,7 @@ let getCrimeData = async function () {
             })
             .attr('fill', (d) => {
                 // console.log(d
-                return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
+                return `green`;
             })
             .on('mouseover', function (d) {
                 d3.select(this)
@@ -183,7 +183,7 @@ let getCrimeData = async function () {
         const mapSorted = [...uniquePrimaryIncidentTypes.entries()].sort((a, b) => b[1] - a[1]);
         console.log(mapSorted);
 
-        const topTenPIT = mapSorted.slice(0, 10);
+        const topTenPIT = mapSorted.slice(0, 20);
 
         const margin = { top: 30, right: 30, bottom: 70, left: 60 };
         const svgTwoWidth = 300 - margin.left - margin.right;
@@ -223,9 +223,20 @@ let getCrimeData = async function () {
             .attr("y", (d => svgTwoHeight - Math.abs(yAxis_two(d[1]) - yAxis_two(0) - 50)))
             .attr("width", xAxis_two.bandwidth() - 2)
             .attr("height", (d => Math.abs(yAxis_two(d[1]) - yAxis_two(0))))
-            .attr("fill", "#69b3a2")
+            .attr("fill", "#58508d")
+            .on('mouseover', function (d) {
+                d3.select(this)
+                    .attr('fill', 'orange');
+            })
+            .on('mouseout', function (d) {
+                d3.select(this)
+                    .transition()
+                    .duration(250)
+                    .attr('fill', '#58508d');
+            })
+            .append("title")
             .text(function (d) {
-                return `Number Incidents: ${d[1]}`
+                return `Number of Recorded Incidents: ${d[1]}`
             });
 
         // data_viz_two's title (played around with positioning to get it right..)
@@ -236,7 +247,7 @@ let getCrimeData = async function () {
             .attr("text-anchor", "middle")
             .style("font-size", "10px")
             .attr("fill", "rgba(21, 17, 19, 0.8)")
-            .text("Top Ten Reported Primary Incident Types");
+            .text("Top Twenty Reported Primary Incident Types");
     }
     catch (err) {
         console.log(`Error: ${err} `);
