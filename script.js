@@ -210,18 +210,17 @@ let getCrimeData = async function () {
             .style("font", "6px times");
 
         let yAxis_two = d3.scaleLinear()
-            .domain([0, `${topTenPIT[1] + 1000}`])
-            .range([svgHeight, 0]);
+            .domain([0, `${topTenPIT[1][1] + 1000}`])
+            .range([svgHeight - 50, 0]);
         svg_Two.append("g")
             .call(d3.axisLeft(yAxis_two));
-
         // add the bars to the plot
         svg_Two.selectAll("rect")
             .data(topTenPIT)
             .enter()
             .append("rect")
             .attr("x", (d => xAxis_two(d[0])))
-            .attr("y", (d => yAxis_two(d[1])))
+            .attr("y", (d => yAxis_two(d[1]) - 50))
             .attr("width", xAxis_two.bandwidth())
             .attr("height", (d => svgHeight - yAxis_two(d[1])))
             .attr("fill", "#69b3a2");
