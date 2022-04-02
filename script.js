@@ -199,7 +199,7 @@ let getCrimeData = async function () {
             .attr("transform", `translate(0, ${svgHeight})`)
             .call(d3.axisBottom(xAxis_two))
             .selectAll("text")
-            .style("transform", `transform(-10, 0)rotate(-45)`)
+            .attr("transform", `translate(-10, 0)rotate(-45)`)
             .style("text-anchor", "end");
 
         let yAxis_two = d3.scaleLinear()
