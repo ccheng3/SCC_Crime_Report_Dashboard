@@ -227,6 +227,16 @@ let getCrimeData = async function () {
             .text(function (d) {
                 return `Number Incidents: ${d[1]}`
             });
+
+        // data_viz_two's title (played around with positioning to get it right..)
+        svg_Two
+            .append("text")
+            .attr("x", svgTwoWidth / 2)
+            .attr("y", -3)
+            .attr("text-anchor", "middle")
+            .style("font-size", "10px")
+            .attr("fill", "rgba(21, 17, 19, 0.8)")
+            .text("Top Ten Reported Primary Incident Types");
     }
     catch (err) {
         console.log(`Error: ${err} `);
