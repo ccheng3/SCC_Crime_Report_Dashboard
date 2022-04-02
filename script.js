@@ -104,7 +104,7 @@ let getCrimeData = async function () {
                 return Math.abs(y_scale_one(d[1]) - y_scale_one(0));
             })
             .attr('fill', (d) => {
-                console.log(d);
+                // console.log(d
                 return `rgb(0, ${Math.round(d[1] / data_scaling_factor)}, 0)`;
             })
             .on('mouseover', function (d) {
@@ -122,7 +122,7 @@ let getCrimeData = async function () {
             .text(function (d) {
                 return `Number Incidents: ${d[1]}`;
             });
-        console.log(dataset_one_final);
+        // console.log(dataset_one_final);
 
         // data_viz_one's title
         svg_One
@@ -181,7 +181,7 @@ let getCrimeData = async function () {
         });
         // - push all count values into array and sort descending order 
         const mapSorted = [...uniquePrimaryIncidentTypes.entries()].sort((a, b) => b[1] - a[1]);
-        console.log(mapSorted[0]);
+        console.log(mapSorted);
 
         const topTenPIT = mapSorted.slice(0, 10);
 
@@ -222,7 +222,6 @@ let getCrimeData = async function () {
             .attr("x", (d => xAxis_two(d[0])))
             .attr("y", (d => svgTwoHeight - Math.abs(yAxis_two(d[1]) - yAxis_two(0) - 50)))
             .attr("width", xAxis_two.bandwidth())
-            // .attr("height", (d => svgTwoHeight - yAxis_two(d[1])))
             .attr("height", (d => Math.abs(yAxis_two(d[1]) - yAxis_two(0))))
             .attr("fill", "#69b3a2");
     }
