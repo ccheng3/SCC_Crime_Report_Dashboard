@@ -181,10 +181,43 @@ let getCrimeData = async function () {
         });
         // - push all count values into array and sort descending order 
         const mapSorted = [...uniquePrimaryIncidentTypes.entries()].sort((a, b) => b[1] - a[1]);
-        console.log(mapSorted[9][0]);
-        // - search Set for top five primary incident types by matching count val to key name
-        // - push top five primary incident types into new array to bind to bar chart's x-axis 
+        console.log(mapSorted[0]);
+
+        const topTenPIT = mapSorted.slice(0, 10);
+
+        let svg_Two = d3
+            .select("#data_viz_2")
+            .append("svg")
+            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
+
         // - y-axis displays num counts, x-axis displays primary incident type's name 
+        let xAxis_two = d3.scaleBand()
+            .domain(topTenPIT.map(d => d[0]))
+            .range([0, svgWidth])
+            .padding(0.2);
+        svg_Two.append("g")
+            .attr("transform", `translate(0, ${svgHeight})`)
+            .call(d3.axisBottom(xAxis_two))
+            .selectAll("text")
+            .style("transform", `transform(-10, 0)rotate(-45)`)
+            .style("text-anchor", "end");
+
+        let yAxis_two = d3.scaleLinear()
+            .domain([0, `${topTenPIT[1] + 1000}`])
+            .range([svgHeight, 0]);
+        svg_Two.append("g")
+            .call(d3.axisLeft(yAxis_two));
+
+        // add the bars to the plot
+        svg_Two.selectAll("rect")
+            .data(topTenPIT)
+            .enter()
+            .append("rect")
+            .attr("x", (d => xAxis_two(d[0])))
+            .attr("y", (d => yAxis_two(d[1])))
+            .attr("width", xAxis_two.bandwidth())
+            .attr("height", (d => svgHeight - yAxis_two(d[1])))
+            .attr("fill", "#69b3a2");
     }
     catch (err) {
         console.log(`Error: ${err} `);
