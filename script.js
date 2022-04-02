@@ -185,22 +185,29 @@ let getCrimeData = async function () {
 
         const topTenPIT = mapSorted.slice(0, 10);
 
+        const margin = { top: 30, right: 30, bottom: 70, left: 60 };
+        const svgTwoWidth = 300 - margin.left - margin.right;
+        const svgTwoHeight = 300 - margin.top - margin.bottom;
+
         let svg_Two = d3
             .select("#data_viz_2")
             .append("svg")
-            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
+            .attr("viewBox", `0 0 ${svgTwoWidth + margin.left + margin.right} 
+            ${svgTwoHeight + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.right})`);
 
         // - y-axis displays num counts, x-axis displays primary incident type's name 
         let xAxis_two = d3.scaleBand()
             .domain(topTenPIT.map(d => d[0]))
-            .range([0, svgWidth])
-            .padding(0.2);
+            .range([0, svgTwoWidth]);
         svg_Two.append("g")
-            .attr("transform", `translate(0, ${svgHeight})`)
+            .attr("transform", `translate(0, ${svgTwoHeight - 100})`)
             .call(d3.axisBottom(xAxis_two))
             .selectAll("text")
-            .attr("transform", `translate(-10, 0)rotate(-45)`)
-            .style("text-anchor", "end");
+            .attr("transform", `translate(-10, 0)rotate(-85)`)
+            .style("text-anchor", "end")
+            .style("font", "6px times");
 
         let yAxis_two = d3.scaleLinear()
             .domain([0, `${topTenPIT[1] + 1000}`])
