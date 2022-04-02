@@ -162,7 +162,29 @@ let getCrimeData = async function () {
             .attr("y", svgHeight + 10)
             .text("Hour of Day");
 
-        // data viz 2: top 5 most common 'primary' crime incidents 
+        // data viz 2: top 10 most common 'primary incident types in the dataset 
+
+        // - initialize a Set (all unique elements) that stores objects with 2 properties,
+        // 'primary-incident-type' and 'num-count'
+        const uniquePrimaryIncidentTypes = new Map();
+        // - iterate thru the filtered dataset and tally up num counts
+        // of each primary incident type 
+        filteredData.forEach(element => {
+            let curr_prim_incident_type = element.incident_type_primary;
+            if (!uniquePrimaryIncidentTypes.has(curr_prim_incident_type)) {
+                uniquePrimaryIncidentTypes.set(curr_prim_incident_type, 1);
+            }
+            else {
+                uniquePrimaryIncidentTypes.set(curr_prim_incident_type,
+                    uniquePrimaryIncidentTypes.get(curr_prim_incident_type) + 1);
+            }
+        });
+        // - push all count values into array and sort descending order 
+        const mapSorted = [...uniquePrimaryIncidentTypes.entries()].sort((a, b) => b[1] - a[1]);
+        console.log(mapSorted[9][0]);
+        // - search Set for top five primary incident types by matching count val to key name
+        // - push top five primary incident types into new array to bind to bar chart's x-axis 
+        // - y-axis displays num counts, x-axis displays primary incident type's name 
     }
     catch (err) {
         console.log(`Error: ${err} `);
