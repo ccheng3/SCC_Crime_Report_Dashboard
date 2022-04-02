@@ -12,7 +12,7 @@
 }
 
 /* this padding parameter is sketchy af - horrible layout on phone viewport. */
-div {
+body>div {
     line-height: 1.8rem;
     padding: 2% 30%;
 }
