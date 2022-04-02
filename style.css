@@ -14,7 +14,7 @@
 /* this padding parameter is sketchy af - horrible layout on phone viewport. */
 #sections {
     line-height: 1.8rem;
-    padding: 5% 15%;
+    padding: 5% 23%;
 }
 
 /* each viz section is separated by whitespace for visual hierarchy */
@@ -26,6 +26,7 @@
 and data viz result. Don't make the report feel 'cluttered'! */
 .data_viz {
     padding-top: 5%;
+    margin: 0 auto;
 }
 
 .axis path,
