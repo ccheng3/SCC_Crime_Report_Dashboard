@@ -221,9 +221,12 @@ let getCrimeData = async function () {
             .append("rect")
             .attr("x", (d => xAxis_two(d[0])))
             .attr("y", (d => svgTwoHeight - Math.abs(yAxis_two(d[1]) - yAxis_two(0) - 50)))
-            .attr("width", xAxis_two.bandwidth())
+            .attr("width", xAxis_two.bandwidth() - 2)
             .attr("height", (d => Math.abs(yAxis_two(d[1]) - yAxis_two(0))))
-            .attr("fill", "#69b3a2");
+            .attr("fill", "#69b3a2")
+            .text(function (d) {
+                return `Number Incidents: ${d[1]}`
+            });
     }
     catch (err) {
         console.log(`Error: ${err} `);
