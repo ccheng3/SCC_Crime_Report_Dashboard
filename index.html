@@ -26,99 +26,111 @@
     </div>
     <h2 class="author">Chris Cheng</h2>
     <h6 class="author"><i>Self-Taught Front-End Web Developer</i></h6>
-    <div id="sections">
-        <div class="introduction">
-            <h3>A web-based data visualization project powered by the
-                Data-Driven Documents
-                library (D3.js).</h3>
-            <h4>Number of recorded crime incidents to date: <span
-                    id="num_incidents_to_date"></span>
-            </h4>
-            <p>I have removed all of the "Phone Ur Office" datapoints since
-                these do not appear to be crime
-                incidents.
-                <br>
-                <br>
-                Unfortunately, it appears that the Santa Clara County Open
-                Datasets do not
-                include a parameter description document, and the lack of clear
-                documentation is just simply
-                frustrating. After all, what could the "Phone Ur Office"
-                incidents be? Would it simply be deputy
-                sheriffs calling in to report the start/end of a patrol shift?
-                Or something more urgent, like
-                reporting in to confirm being en-route to a 911 call or
-                communicating availability to respond
-                to a 911 call?
-            </p>
-            <p>The Seattle Police department's crime report dataset is much more
-                detailed
-                and
-                refined in this regard - Seattle PD actually records the
-                latitude and longitudinal
-                coordinates of each incident. Massive respect to Seattle PD for
-                putting in that extra effort. SF and Silicon Valley local
-                govt's really need to follow suit and strengthen their Open Data
-                practices. </p>
+    <!-- <div id="sections"> -->
+    <div class="introduction">
+        <h3>A web-based data visualization project powered by the
+            Data-Driven Documents
+            library (D3.js).</h3>
+        <h4>Number of recorded crime incidents to date: <span
+                id="num_incidents_to_date"></span>
+        </h4>
+        <p>I have removed all of the "Phone Ur Office" datapoints since
+            these do not appear to be crime
+            incidents.
+            <br>
+            <br>
+            Unfortunately, it appears that the Santa Clara County Open
+            Datasets do not
+            include a parameter description document, and the lack of clear
+            documentation is just simply
+            frustrating. After all, what could the "Phone Ur Office"
+            incidents be? Would it simply be deputy
+            sheriffs calling in to report the start/end of a patrol shift?
+            Or something more urgent, like
+            reporting in to confirm being en-route to a 911 call or
+            communicating availability to respond
+            to a 911 call?
+        </p>
+        <p>The Seattle Police department's crime report dataset is much more
+            detailed
+            and
+            refined in this regard - Seattle PD actually records the
+            latitude and longitudinal
+            coordinates of each incident. Massive respect to Seattle PD for
+            putting in that extra effort. SF and Silicon Valley local
+            govt's really need to follow suit and strengthen their Open Data
+            practices. </p>
+    </div>
+    <div id="num_crime_vs_TOD_bar_chart" class="data-viz-section">
+        <h3>Let's first take a look at the frequency distribution of
+            incident reports over a 24 hour period.
+        </h3>
+        <p>The X-axis tracks the hour of day, while the Y-axis tracks the
+            number of incidents recorded during each
+            hour. My initial guess is that there should be less reported
+            incidents during the day, and then a sharp
+            increase during the night. I am making the general assumption
+            that
+            the cover of darkness would push more
+            criminal activity to occur at night. However, it could just very
+            well stay relatively constant. Let's check it out.</p>
+    </div>
+    <figure id="data_viz_1" class="data_viz"> </figure>
+    <div class="analysis-one">
+        Yep....my initial guess was way off.
+        <br>
+        So starting off, we see instead that there are very few
+        reported
+        incidents from 12
+        AM to 5 AM. 5 AM actually sees the least amount of criminal
+        activity in the entire 24 hour period. It then starts to build
+        up again
+        at 6 AM, increasing
+        at the largest intervals found anywhere in the 24 hour
+        period. The
+        activity
+        tops out at the max by 10 AM, and then slowly decreases for the
+        rest of the day.
+        <br>
+        <br>
+        Given these results, I can confidently conclude that my
+        hypothesis
+        of "more crime under the cover of darkness" wasn't actually
+        true. The highest amount of criminal activity actually occurs
+        during open
+        daylight, at 10 AM.
+        <br>
+        <br>
+        This result actually makes quite a lot of sense - the Santa
+        Clara County Sheriff's Department
+        mainly patrols the suburban areas of the County, while the San
+        Jose Police Department covers the City of San Jose, including
+        the super urban area
+        of
+        Downtown San Jose. As a result,
+        this data visualization highly supports the argument that
+        most home robberies occur during normal working hours, when
+        residents
+        are away from home.
+    </div>
+    <div id="top_five_recorded_primary_incidents" class="data-viz-section">
+        <h3>What are the five most commonly reported primary incident types
+            in this dataset?
+        </h3>
+        <p> This one's more difficult to come up with a hypothesis. I'm
+            going to guess
+            vehicle theft and burglary right off the bat since we're hearing
+            so much
+            of these kinds of incidents. Let's check it out.</p>
+        <div class="analysis-two">
+            <figure id="data_viz_2" class="data_viz"> </figure>
         </div>
-        <div id="num_crime_vs_TOD_bar_chart">
-            <h3>Let's first take a look at the frequency distribution of
-                incident reports over a 24 hour period.
-            </h3>
-            <p>The X-axis tracks the hour of day, while the Y-axis tracks the
-                number of incidents recorded during each
-                hour. My initial guess is that there should be less reported
-                incidents during the day, and then a sharp
-                increase during the night. I am making the general assumption
-                that
-                the cover of darkness would push more
-                criminal activity to occur at night. However, it could just very
-                well stay relatively constant. Let's check it out.</p>
-            <div class="analysis-one">
-                <figure id="data_viz_1" class="data_viz"> </figure>
-                Yep....my initial guess was way off.
-                <br>
-                So starting off, we see instead that there are very few
-                reported
-                incidents from 12
-                AM to 5 AM. 5 AM actually sees the least amount of criminal
-                activity in the entire 24 hour period. It then starts to build
-                up again
-                at 6 AM, increasing
-                at the largest intervals found anywhere in the 24 hour
-                period. The
-                activity
-                tops out at the max by 10 AM, and then slowly decreases for the
-                rest of the day.
-                <br>
-                <br>
-                Given these results, I can confidently conclude that my
-                hypothesis
-                of "more crime under the cover of darkness" wasn't actually
-                true. The highest amount of criminal activity actually occurs
-                during open
-                daylight, at 10 AM.
-                <br>
-                <br>
-                This result actually makes quite a lot of sense - the Santa
-                Clara County Sheriff's Department
-                mainly patrols the suburban areas of the County, while the San
-                Jose Police Department covers the City of San Jose, including
-                the super urban area
-                of
-                Downtown San Jose. As a result,
-                this data visualization highly supports the argument that
-                most home robberies occur during normal working hours, when
-                residents
-                are away from home.
-            </div>
-            <div>
-                But I feel like it's more nuanced than that - ###
-            </div>
-        </div>
+
+
         <div class="sources_citations">
             <h3>Sources</h3>
-            The data is sourced from the Santa Clara County Open Data Portal.
+            The data is sourced from the Santa Clara County Open Data
+            Portal.
             Here is the link to the dataset:
             <a href="https://data.sccgov.org/Public-Safety/Crime-Reports/n9u6-aijz"
                 target="_blank" rel="noopener noreferrer">Link here</a>
@@ -126,9 +138,11 @@
             <br>
             An interesting observation of note - this is the most popular
             dataset that is not COVID-19 related.
-            I think two conclusions could be equally likely to be true. Firstly,
+            I think two conclusions could be equally likely to be true.
+            Firstly,
             SCC residents are becoming increasingly
-            concerned about rising crime in the County. Or, alternatively, users
+            concerned about rising crime in the County. Or, alternatively,
+            users
             who don't even live in the County are
             interested
             in seeing what the numbers say in order to justify their
@@ -137,16 +151,19 @@
             or the San Francisco Bay Area in general. Or both, since the two
             sentiments are not mutually exclusive.
 
-            <h4>Interactive Data Visualization for the Web, 2nd Edition <span><a
-                        href="https://learning.oreilly.com/library/view/interactive-data-visualization/9781491921296/"
+            <h4>Interactive Data Visualization for the Web, 2nd Edition
+                <span><a href="https://learning.oreilly.com/library/view/interactive-data-visualization/9781491921296/"
                         target="_blank" rel="noopener noreferrer">Link
-                        here</a> (through O'Reilly Safari)</span></h4>
-            <div>Scott does an amazing job of communicating his knowledge of D3
+                        here</a> (through O'Reilly Safari)</span>
+            </h4>
+            <div>Scott does an amazing job of communicating his knowledge of
+                D3
                 in a conversational format, especially
                 geared towards someone without a hard CS background. Perfect
                 match for me because I want to make things
                 work and not get mired up in the technicalities behind the
-                library. A small problem I have is that some of the example data
+                library. A small problem I have is that some of the example
+                data
                 viz's are not displaying
                 on my computer for some reason. I have yet to resolve the
                 problem. I do try and study the
@@ -159,12 +176,13 @@
                         target="_blank" rel="noopener noreferrer">Link
                         here</a></span>
             </h4>
-            <div>Jonas is such a great teacher and to be perfectly honest, he
+            <div>Jonas is such a great teacher and to be perfectly honest,
+                he
                 is single-handedly responsible for
                 keeping me interested in web development.
             </div>
         </div>
-    </div>
+        <!-- </div> -->
 </body>
 
 </html>
