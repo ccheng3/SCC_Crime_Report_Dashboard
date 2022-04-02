@@ -202,10 +202,10 @@ let getCrimeData = async function () {
             .domain(topTenPIT.map(d => d[0]))
             .range([0, svgTwoWidth]);
         svg_Two.append("g")
-            .attr("transform", `translate(0, ${svgTwoHeight - 100})`)
+            .attr("transform", `translate(0, ${svgTwoHeight - 50})`)
             .call(d3.axisBottom(xAxis_two))
             .selectAll("text")
-            .attr("transform", `translate(-10, 0)rotate(-85)`)
+            .attr("transform", `translate(-10, 5)rotate(-85)`)
             .style("text-anchor", "end")
             .style("font", "6px times");
 
