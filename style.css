@@ -26,6 +26,10 @@ figure {
     padding: 4% 20%;
 }
 
+ol>li {
+    font-size: 24px;
+}
+
 /* All data-viz divs should have a small padding-top to separate between initial hypothesis/thoughts
 and data viz result. Don't make the report feel 'cluttered'! */
 .data_viz {
